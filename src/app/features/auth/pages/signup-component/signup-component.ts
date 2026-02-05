@@ -1,0 +1,60 @@
+import { Component, signal } from '@angular/core';
+import { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';
+import { SignupFormInterface } from '../../../../core/models/signup-form-interface';
+
+@Component({
+  selector: 'app-signup-component',
+  imports: [],
+  templateUrl: './signup-component.html',
+  styleUrl: './signup-component.css',
+})
+export class SignupComponent {
+  signupModel = signal<SignupFormInterface>({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  signupForm = form(this.signupModel, (schemaPath) => {
+    required(schemaPath.name, {
+      message: 'Full name is required',
+    });
+
+    minLength(schemaPath.name, 2, {
+      message: 'Name must be at least 2 characters long',
+    });
+
+    maxLength(schemaPath.name, 100, {
+      message: 'Name cannot exceed 100 characters',
+    });
+
+    required(schemaPath.email, {
+      message: 'Email address is required',
+    });
+
+    email(schemaPath.email, {
+      message: 'Please enter a valid email address',
+    });
+
+    required(schemaPath.password, {
+      message: 'Password is required',
+    });
+
+    minLength(schemaPath.password, 6, {
+      message: 'Password must be at least 6 characters long',
+    });
+
+    maxLength(schemaPath.password, 255, {
+      message: 'Password cannot exceed 255 characters',
+    });
+
+    pattern(schemaPath.password, /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/, {
+      message:
+        'Password must include at least one uppercase letter, one lowercase letter, one number, and one special character',
+    });
+  });
+
+  submit(){
+
+  }
+}
