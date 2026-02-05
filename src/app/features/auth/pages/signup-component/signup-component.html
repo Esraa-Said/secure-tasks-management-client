@@ -77,6 +77,13 @@
           </button>
         </div>
 
+        <div class="error-message">
+         
+            @for (error of errorMessage(); track $index) {
+             <span>*{{ error }}</span> 
+            
+          }
+        </div>
         <div class="login">
           Already crushing tasks?
 

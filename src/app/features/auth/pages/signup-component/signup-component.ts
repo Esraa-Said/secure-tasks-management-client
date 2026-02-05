@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal, WritableSignal } from '@angular/core';
 import {
   email,
   form,
@@ -9,6 +9,7 @@ import {
   FormField,
 } from '@angular/forms/signals';
 import { SignupFormInterface } from '../../../../core/models/signup-form-interface';
+import { AuthService } from '../../../../core/services/auth-service';
 
 @Component({
   selector: 'app-signup-component',
@@ -17,6 +18,8 @@ import { SignupFormInterface } from '../../../../core/models/signup-form-interfa
   styleUrl: './signup-component.css',
 })
 export class SignupComponent {
+  private authService = inject(AuthService);
+  errorMessage: WritableSignal<string> = signal<string>('');
   signupModel = signal<SignupFormInterface>({
     name: '',
     email: '',
@@ -62,15 +65,20 @@ export class SignupComponent {
     });
   });
 
-   onSubmit(event: Event) {
+  onSubmit(event: Event) {
     event.preventDefault();
-    console.log(this.signupModel());
-    
+    this.errorMessage.set('');
+
     if (this.signupForm().invalid()) {
       this.signupForm.name().markAsTouched();
       this.signupForm.email().markAsTouched();
       this.signupForm.password().markAsTouched();
       return;
     }
+    this.authService.register(this.signupModel()).subscribe({
+      error: (message) => {
+        this.errorMessage.set(message);
+      },
+    });
   }
 }
