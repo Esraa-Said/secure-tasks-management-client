@@ -1,10 +1,18 @@
 import { Component, signal } from '@angular/core';
-import { email, form, maxLength, minLength, pattern, required } from '@angular/forms/signals';
+import {
+  email,
+  form,
+  maxLength,
+  minLength,
+  pattern,
+  required,
+  FormField,
+} from '@angular/forms/signals';
 import { SignupFormInterface } from '../../../../core/models/signup-form-interface';
 
 @Component({
   selector: 'app-signup-component',
-  imports: [],
+  imports: [FormField],
   templateUrl: './signup-component.html',
   styleUrl: './signup-component.css',
 })
@@ -54,7 +62,15 @@ export class SignupComponent {
     });
   });
 
-  submit(){
-
+   onSubmit(event: Event) {
+    event.preventDefault();
+    console.log(this.signupModel());
+    
+    if (this.signupForm().invalid()) {
+      this.signupForm.name().markAsTouched();
+      this.signupForm.email().markAsTouched();
+      this.signupForm.password().markAsTouched();
+      return;
+    }
   }
 }

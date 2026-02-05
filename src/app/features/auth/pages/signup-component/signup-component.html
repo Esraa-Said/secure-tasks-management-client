@@ -9,31 +9,68 @@
         <div>TaskTastic</div>
       </h3>
       <p class="organized">Let's get you organized! 🎉</p>
-      <form>
+      <form novalidate autocomplete="off" (submit)="onSubmit($event)">
         <div class="form-field">
           <label> <img src="assets/user-icon.png" alt="user-icon" /> Your Awesome Name </label>
-          <input type="text" matInput placeholder="Tony Stark" />
+          <input type="text" matInput placeholder="Tony Stark" [formField]="signupForm.name" />
+          <div class="error-message">
+            @if (signupForm.name().invalid() && signupForm.name().touched()) {
+              @for (error of signupForm.name().errors(); track $index) {
+                <span>*{{ error.message }}</span>
+              }
+            }
+          </div>
         </div>
 
         <div class="form-field">
           <label> <img src="assets/email-icon.png" alt="email-icon" /> Email Address </label>
-          <input type="text" matInput placeholder="you@awesome.com" />
+          <input
+            type="email"
+            matInput
+            placeholder="you@awesome.com"
+            [formField]="signupForm.email"
+            autocomplete="new-email"
+          />
+          <div class="error-message">
+            @if (signupForm.email().invalid() && signupForm.email().touched()) {
+              @for (error of signupForm.email().errors(); track $index) {
+                <span>*{{ error.message }}</span>
+              }
+            }
+          </div>
         </div>
 
         <div class="form-field">
           <label> <img src="assets/lock-icon.png" alt="lock-icon" /> Super Secret Password </label>
-          <input type="text" matInput placeholder="******" />
+          <input
+            type="password"
+            matInput
+            placeholder="******"
+            [formField]="signupForm.password"
+            autocomplete="new-password"
+          />
+          <div class="error-message">
+            @if (signupForm.password().invalid() && signupForm.password().touched()) {
+              @for (error of signupForm.password().errors(); track $index) {
+                <span>*{{ error.message }}</span>
+              }
+            }
+          </div>
           <p>
             Make it strong, like your coffee <img src="assets/coffee-icon.png" alt="coffee-icon" />
           </p>
         </div>
 
         <div class="submit-button-div">
-          <button>
+          <button type="submit" [disabled]="signupForm().submitting()">
             <span>
               <img src="assets/star-icon.png" alt="star-icon" />
             </span>
-            <span>Start Being Productive!</span>
+
+            <span>
+              {{ signupForm().submitting() ? 'Sending..' : 'Start Being Productive!' }}
+            </span>
+
             <span>
               <img src="assets/next-arrow-icon.png" alt="next-arrow-icon" />
             </span>
@@ -74,11 +111,11 @@
           <span class="analytic-num">99.9%</span><br />
           Task Completion*
         </p>
-        <p >
+        <p>
           <span class="analytic-num">24/7</span><br />
           Procrastination Help
         </p>
-        <p >
+        <p>
           <span class="analytic-num">0%</span><br />
           Judgment
         </p>
