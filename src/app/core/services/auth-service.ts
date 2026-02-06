@@ -13,8 +13,12 @@ export class AuthService {
 
   register(data: SignupFormInterface): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/auth/register`, data).pipe(
-      // map((res)=>res.message),
+      map((res)=>res.message),
       catchError((error) => throwError(() => error.error?.message || 'Server Error')),
     );
   }
+
+  // sendVerificationEmail():Observable<any>{
+  //   return this.httpClient.get<any>(`${this.baseUrl}/auth/verify-user/`).pipe
+  // }
 }

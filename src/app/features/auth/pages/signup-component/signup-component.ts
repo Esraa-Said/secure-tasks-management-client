@@ -10,6 +10,7 @@ import {
 } from '@angular/forms/signals';
 import { SignupFormInterface } from '../../../../core/models/signup-form-interface';
 import { AuthService } from '../../../../core/services/auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup-component',
@@ -19,6 +20,7 @@ import { AuthService } from '../../../../core/services/auth-service';
 })
 export class SignupComponent {
   private authService = inject(AuthService);
+  private router = inject(Router);
   errorMessage: WritableSignal<string> = signal<string>('');
   signupModel = signal<SignupFormInterface>({
     name: '',
@@ -76,6 +78,9 @@ export class SignupComponent {
       return;
     }
     this.authService.register(this.signupModel()).subscribe({
+      next: (message) => {
+        this.router.navigateByUrl('/email-verification-sent');
+      },
       error: (message) => {
         this.errorMessage.set(message);
       },
