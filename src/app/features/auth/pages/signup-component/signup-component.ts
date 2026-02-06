@@ -79,7 +79,9 @@ export class SignupComponent {
     }
     this.authService.register(this.signupModel()).subscribe({
       next: (message) => {
-        this.router.navigateByUrl('/email-verification-sent');
+        this.router.navigateByUrl('/email-verification-sent', {
+          state: { userEmail: this.signupForm.email().value() },
+        });
       },
       error: (message) => {
         this.errorMessage.set(message);

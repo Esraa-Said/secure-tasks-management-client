@@ -1,1 +1,35 @@
-<p>send-verification-email-component works!</p>
+<div class="container">
+  <div class="content">
+    <div class="email-img">
+      <img src="assets/verification-email-icon.png" alt="verification-email-icon" />
+    </div>
+
+    <h2>Check Your Inbox! 📬</h2>
+
+    <p>We sent a verification email to</p>
+
+    <p class="user-email">{{ userEmail }}</p>
+
+    <div class="what-to-do-next">
+      <div class="head">
+        <img src="assets/verification-star-icon.png" alt="star-icon" /> What to do next:
+      </div>
+      <div class="steps">
+        <p><span>1</span> Open your email inbox 📧</p>
+        <p><span>2</span> Look for our verification email 🔍</p>
+        <p><span>3</span> Click the magic verification link ✨</p>
+        <p><span>4</span> Start crushing those tasks! 🚀</p>
+      </div>
+    </div>
+
+    <p style="font-size: 14px; color: var(--gray-400);">
+      Didn't receive the email? Check your spam folder or
+    </p>
+    <p class="resend-button-div">
+      <button>
+        <img src="assets/resend-email.png" alt="resend-email-icon" />
+        Resend Verification Email
+      </button>
+    </p>
+  </div>
+</div>
