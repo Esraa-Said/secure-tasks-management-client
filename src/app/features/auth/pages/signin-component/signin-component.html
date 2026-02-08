@@ -1,0 +1,125 @@
+<div class="container">
+  <div class="design">
+    <div class="todo-img">
+      <img src="assets/todo-icon.png" alt="todo-icon" />
+    </div>
+
+    <div class="cup-img">
+      <img src="assets/cup-icon.png" alt="cup-icon" />
+    </div>
+
+    <div class="design-content">
+      <h1>
+        Welcome Back,<br />
+        <i>Productivity Champion!</i> ! 🏆
+      </h1>
+
+      <p>
+        Your tasks missed you! Let's go back to crushing <br />
+        those to-dos
+      </p>
+
+      <div class="analytic">
+        <p>
+          <span>✔</span><br />
+          Tasks Waiting
+        </p>
+        <p>
+          <span>🔥</span><br />
+          Streak Active
+        </p>
+        <p>
+          <span>💪</span><br />
+          You Got This
+        </p>
+      </div>
+
+      <div class="tip">"The secret to getting ahead is getting started" - Mark Twain</div>
+    </div>
+  </div>
+
+  <div class="form">
+    <div class="content">
+      <h3>
+        <div class="check-box-icon">
+          <img src="assets/check-box-signin-icon.png" alt="check-box-icon" />
+        </div>
+
+        <div>TaskTastic</div>
+      </h3>
+      <p class="organized">Time to tackle those tasks! 💪</p>
+      <form novalidate autocomplete="off" (submit)="onSubmit($event)">
+        <div class="form-field">
+          <label> <img src="assets/email-icon.png" alt="email-icon" /> Email Address </label>
+          <input
+            type="email"
+            matInput
+            placeholder="you@awesome.com"
+            [formField]="signinForm.email"
+            autocomplete="new-email"
+          />
+          <div class="error-message">
+            @if (signinForm.email().invalid() && signinForm.email().touched()) {
+              @for (error of signinForm.email().errors(); track $index) {
+                <span>*{{ error.message }}</span>
+              }
+            }
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label> <img src="assets/lock-icon.png" alt="lock-icon" /> Super Secret Password </label>
+          <input
+            type="password"
+            matInput
+            placeholder="******"
+            [formField]="signinForm.password"
+            autocomplete="new-password"
+          />
+          <div class="error-message">
+            @if (signinForm.password().invalid() && signinForm.password().touched()) {
+              @for (error of signinForm.password().errors(); track $index) {
+                <span>*{{ error.message }}</span>
+              }
+            }
+          </div>
+        </div>
+
+        <div class="remember-forgot">
+          <div class="remember-me-div">
+            <input type="checkbox" name="remember-me" id="remember-me" />
+            <label for="remember-me">Remember me</label>
+          </div>
+          <div class="forgot-password">
+            <a href="#">Forgot password?</a>
+          </div>
+        </div>
+
+        <div class="submit-button-div">
+          <button type="submit" [disabled]="signinForm().submitting()">
+            <span>
+              <img src="assets/login-icon.png" alt="login-icon" />
+            </span>
+            <span>
+              {{ signinForm().submitting() ? 'Sending..' : 'Start Being Productive!' }}
+            </span>
+
+            <span>
+              <img src="assets/star-icon.png" alt="star-icon" />
+            </span>
+          </button>
+        </div>
+
+        @if (errorMessage) {
+          <div class="error-message">
+           *{{ errorMessage }}
+          </div>
+        }
+        <div class="signup" style="color: var(--gray-400)">
+          New to TaskTastic?
+          <a routerLink="/register">Create an account</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

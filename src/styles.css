@@ -1,4 +1,4 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,6 +37,12 @@
     var(--electric-violet) 100%
   );
 
+  --blue-to-purple-to-pink-gradient: linear-gradient(
+    145deg,
+    var(--bright-blue) 0%,
+    var(--electric-violet) 50%,
+     var(--vivid-pink) 100%
+  );
   --pill-accent: var(--bright-blue);
 
   font-family:

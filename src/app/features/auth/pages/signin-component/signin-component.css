@@ -1,0 +1,259 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* Left & Right split */
+.form,
+.design {
+  flex-basis: 50%;
+}
+
+.design {
+  background: var(--blue-to-purple-to-pink-gradient);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 50px;
+}
+.cup-img {
+  width: 50%;
+}
+.cup-img img {
+  width: 50px;
+  animation: move 1s alternate-reverse infinite;
+}
+@keyframes move {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(20px);
+  }
+}
+.todo-img {
+  width: 250px;
+  border: 10px solid transparent;
+  background:
+    linear-gradient(white, white) padding-box,
+    var(--blue-to-purple-to-pink-gradient) border-box;
+  border-radius: 10px;
+  padding: 10px;
+}
+.todo-img img {
+  width: 100%;
+}
+
+.design-content {
+  margin-top: 10px;
+  color: white;
+  text-align: center;
+}
+.design-content h1 {
+  font-weight: 400;
+  line-height: 45px;
+}
+.design-content h1 img {
+  width: 24px;
+}
+.design-content > p {
+  margin-top: 10px;
+  line-height: 25px;
+}
+.design-content .analytic {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  font-size: 14px;
+}
+
+.design-content .analytic span {
+  font-size: 24px;
+}
+
+.tip {
+  margin-top: 20px;
+  font-size: 12px;
+}
+/* Media Queries */
+@media (max-width: 1200px) {
+  .design-content h1 {
+    font-size: 24px;
+    line-height: 30px;
+  }
+  .design-content > p {
+    font-size: 16px;
+  }
+  .design-content .analytic span {
+    font-size: 16px;
+  }
+  .design-content .analytic {
+    font-size: 12px;
+  }
+}
+
+/* Error message */
+.error-message {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  color: red;
+}
+@media (max-width: 900px) {
+  .design {
+    display: none;
+  }
+  .form {
+    flex-basis: 100%;
+  }
+}
+
+
+.form {
+  background-color: var(--gray-100);
+}
+
+/* Card */
+.content {
+  min-width: 60%;
+  margin: 70px ;
+  padding: 36px;
+  background-color: #fff;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.08),
+    0 12px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Typography & misc */
+h3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+p.organized {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--gray-400);
+}
+
+.check-box-icon img {
+  width: 36px;
+}
+
+/* Form layout */
+form {
+  width: 100%;
+  margin-top: 50px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.form-field {
+  width: 95%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Form fields */
+.form-field label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-weight: 550;
+}
+
+.form-field label img {
+  width: 20px;
+}
+
+.form-field input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+
+  background-color: var(--gray-100);
+  border: none;
+  border-radius: 10px;
+}
+
+.form-field p {
+  font-size: 12px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--gray-400);
+}
+
+.form-field p img {
+  width: 16px;
+  margin-left: 10px;
+}
+
+.remember-forgot {
+    width: 90%;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.remember-forgot a {
+  color: var(--bright-blue);
+  text-decoration: none;
+}
+
+/* Buttons & login */
+.submit-button-div,
+.signup {
+  width: 95%;
+  margin-top: 20px;
+  font-size: 16px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button-div button {
+  width: 100%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  background: var(--blue-to-purple-to-pink-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.submit-button-div button img {
+  width: 20px;
+  margin-top: 2px;
+}
+
+.signup a {
+  margin-left: 5px;
+  color: var(--bright-blue);
+  text-decoration: none;
+}

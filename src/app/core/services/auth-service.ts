@@ -18,10 +18,17 @@ export class AuthService {
     );
   }
 
+  signin(data: { email: string; password: string }): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/login`, data).pipe(
+      map((res) => res.message),
+      catchError((error) => throwError(() => error.error?.message || 'Server Error')),
+    );
+  }
+
   verifyAccount(code: string | null): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/verify-user/${code}`);
   }
   resendVerificationCode(email: string): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/resend-verification-code`, {email: email});
+    return this.httpClient.post<any>(`${this.baseUrl}/resend-verification-code`, { email: email });
   }
 }

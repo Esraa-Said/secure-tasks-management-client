@@ -10,11 +10,11 @@ import {
 } from '@angular/forms/signals';
 import { SignupFormInterface } from '../../../../core/models/signup-form-interface';
 import { AuthService } from '../../../../core/services/auth-service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-signup-component',
-  imports: [FormField],
+  imports: [FormField, RouterLink],
   templateUrl: './signup-component.html',
   styleUrl: './signup-component.css',
 })
