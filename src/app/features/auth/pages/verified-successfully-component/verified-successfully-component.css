@@ -1,0 +1,94 @@
+.container,
+.content,
+.image,
+.boxes,
+.family {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.container {
+  background: rgba(172, 172, 172, 0.1);
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.content {
+  min-width: 30%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.08),
+    0 12px 20px rgba(0, 0, 0, 0.12);
+
+  flex-direction: column;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: var(--vivid-pink);
+}
+
+h1 {
+  letter-spacing: 2px;
+  font-weight: 500;
+  line-height: 40px;
+}
+.boxes {
+  width: 100%;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.boxes .box {
+  flex: 1 1 30%;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.family {
+  flex-direction: column;
+  background-color: rgba(0, 255, 85, 0.1);
+  border: 2px solid rgba(0, 255, 85, 0.3);
+  border-radius: 10px;
+  padding: 16px;
+  gap: 20px;
+}
+
+.family p {
+  color: var(--gray-700);
+  font-size: 14px;
+}
+.family .features {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.family .features div {
+  background-color: white;
+  border-radius: 8px;
+  padding: 14px;
+  text-align: left;
+  font-size: 14px;
+}
+
+@media (max-width: 600px) {
+  .family .features {
+    grid-template-columns: 1fr;
+  }
+}
+
+.start-div button {
+  background: var(--vivid-pink);
+  padding: 12px;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+}

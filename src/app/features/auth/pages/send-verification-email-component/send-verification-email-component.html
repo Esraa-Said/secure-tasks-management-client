@@ -22,14 +22,20 @@
       </div>
     </div>
 
-    <p style="font-size: 14px; color: var(--gray-400);">
+    <p style="font-size: 14px; color: var(--gray-400)">
       Didn't receive the email? Check your spam folder or
     </p>
-    <p class="resend-button-div">
-      <button>
+    <div class="resend-button-div">
+      <button (click)="resendVerificationCode()">
         <img src="assets/resend-email.png" alt="resend-email-icon" />
         Resend Verification Email
       </button>
-    </p>
+
+      @if (resMessage) {
+        <p style="color: blue; text-align: center; font-size: 14px">{{ resMessage }}</p>
+      } @else {
+        <p style="color: red; text-align: center; font-size: 14px">*{{ errMessage }}</p>
+      }
+    </div>
   </div>
 </div>

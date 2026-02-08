@@ -7,18 +7,21 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AuthService {
-  private baseUrl = 'http://localhost:5000';
+  private baseUrl = 'http://localhost:5000/auth';
 
   private httpClient = inject(HttpClient);
 
   register(data: SignupFormInterface): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/auth/register`, data).pipe(
-      map((res)=>res.message),
+    return this.httpClient.post<any>(`${this.baseUrl}/register`, data).pipe(
+      map((res) => res.message),
       catchError((error) => throwError(() => error.error?.message || 'Server Error')),
     );
   }
 
-  // sendVerificationEmail():Observable<any>{
-  //   return this.httpClient.get<any>(`${this.baseUrl}/auth/verify-user/`).pipe
-  // }
+  verifyAccount(code: string | null): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseUrl}/verify-user/${code}`);
+  }
+  resendVerificationCode(email: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/resend-verification-code`, {email: email});
+  }
 }

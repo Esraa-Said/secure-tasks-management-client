@@ -9,7 +9,7 @@
   align-items: center;
 }
 .container {
-  background: var(--vivid-pink);
+  background: rgba(172, 172, 172, 0.1);
   min-height: 100vh;
   gap: 20px;
 }
@@ -37,6 +37,7 @@
 
 h2 {
   letter-spacing: 3px;
+  line-height: 30px;
 }
 
 .content > p:first-of-type {
@@ -48,8 +49,9 @@ h2 {
 .user-email {
   color: var(--vivid-pink);
   background-color: rgb(255, 0, 179, 0.1);
-  padding: 5px 40px;
+  padding: 5px 10px;
   border-radius: 8px;
+  word-break: break-all;
 }
 
 .what-to-do-next {
