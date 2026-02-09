@@ -14,7 +14,7 @@ export const verifyAccountGuard: CanActivateFn = (route) => {
       return false; // Prevent access to the actual URL
     }),
     catchError((err) => {
-      router.navigateByUrl('failed-verified', { state: { msg: err.error?.message } });
+      router.navigateByUrl('failed-verified', { state: { msg: err.error?.message || 'Internal server error' } });
       return of(false);
     })
   );

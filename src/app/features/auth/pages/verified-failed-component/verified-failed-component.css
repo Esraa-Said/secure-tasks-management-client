@@ -1,0 +1,135 @@
+.container,
+.content,
+.image,
+.reasons,
+.reasons-box,
+.reasons-box div,
+.future .boxes,
+.resend-box,
+.verified-box,
+h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container {
+  background: rgba(172, 172, 172, 0.1);
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content {
+  min-width: 40%;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.08),
+    0 12px 20px rgba(0, 0, 0, 0.12);
+
+  flex-direction: column;
+}
+
+.image {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--red-to-pink-to-purple-horizontal-gradient);
+}
+
+.content > p {
+  color: red;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 5px 15px;
+  font-weight: 420;
+  animation: moveUpDown 1s infinite alternate-reverse;
+}
+@keyframes moveUpDown {
+    from{
+        transform: translateY(10px);
+    }
+    to{
+        transform: translateY(-10px);
+    }
+}
+
+.reasons {
+  flex-direction: column;
+  background-color: rgba(254, 199, 210, 0.3);
+  border: 2px solid rgba(254, 199, 210, 0.6);
+  padding: 20px;
+  border-radius: 10px;
+  width: 80%;
+  gap: 20px;
+}
+.reasons-box {
+  gap: 10px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px;
+  width: 100%;
+  justify-content: start;
+}
+.reasons-box > p {
+  font-size: 20px;
+}
+.reasons-box div {
+  flex-direction: column;
+  align-items: start;
+  font-size: 12px;
+}
+.reasons-box div p:first-of-type {
+  font-weight: 500;
+}
+.future {
+  width: 87%;
+}
+.future .boxes {
+  gap: 20px;
+  
+}
+.resend-box,
+.verified-box {
+  flex-direction: column;
+  margin-top: 10px;
+  padding: 20px;
+  gap: 20px;
+  border-radius: 8px;
+  flex-basis: 45%;
+}
+
+.resend-box {
+  background-color: rgba(182, 213, 255, 0.2);
+  border: 2px solid rgba(182, 213, 255, 0.8);
+}
+
+.verified-box {
+  background-color: rgba(253, 184, 255, 0.2);
+  border: 2px solid rgba(253, 184, 255, 0.8);
+}
+
+.resend-box button,
+.verified-box button {
+  border-radius: 8px;
+  padding: 8px;
+  border: none;
+  width: 100%;
+  color: white;
+  cursor: pointer;
+}
+.resend-box button {
+  background: var(--bright-blue);
+}
+
+.verified-box button {
+  background: var(--red-to-pink-to-purple-horizontal-gradient);
+}
+
+.resend-box p, .verified-box p{
+    font-size: 10px;
+}

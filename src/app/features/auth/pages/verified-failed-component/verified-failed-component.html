@@ -1,1 +1,77 @@
-<p>verified-failed-component works!</p>
+<div class="container">
+  <div class="content">
+    <div class="image">
+      <img src="assets/verification-failed-icon.png" alt="verification-failed-icon" />
+    </div>
+
+    <h1>Oops! Verification Failed 😕</h1>
+
+    <p>*{{errorMessage}}</p>
+
+    <div class="reasons">
+      <h4 >
+        <img src="assets/question-icon.png" alt="question-icon" />
+        Why did this happen?
+      </h4>
+
+      <div class="reasons-box">
+        <p>⏰</p>
+        <div>
+          <p>Link Expired</p>
+          <p>Verification links are only valid for 24 hours</p>
+        </div>
+      </div>
+
+      <div class="reasons-box">
+        <p>🔗</p>
+        <div>
+          <p>Link Already Used</p>
+          <p>You may have already verified your account</p>
+        </div>
+      </div>
+
+      <div class="reasons-box">
+        <p>❌</p>
+        <div>
+          <p>Invalid Link</p>
+          <p>The link might be incomplete or corrupted</p>
+        </div>
+      </div>
+
+      <div class="reasons-box">
+        <p>📧</p>
+        <div>
+          <p>Email Mismatch</p>
+          <p>The email might not match our records</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="future">
+      <h3>💡 Here's what you can do:</h3>
+      <div class="boxes">
+        <div class="resend-box">
+          <p style="font-size: 24px;">📬</p>
+          <h5>Request New Link</h5>
+          <p>We'll send you a fresh verification link</p>
+          
+            <button routerLink="">
+              Resend Email
+            </button>
+        
+        </div>
+
+        <div class="verified-box">
+          <p style="font-size: 24px;">🔓</p>
+          <h5>Already Verified?</h5>
+          <p>Try logging in to your account</p>
+          
+            <button routerLink="/signin">
+              Go to Login
+            </button>
+      
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
