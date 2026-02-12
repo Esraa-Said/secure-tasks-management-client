@@ -31,11 +31,18 @@
       <i>Enter the email you used to sign up</i>
 
       <button
+        (click)="resendVerificationCode(emailInput.value)"
         [disabled]="emailInput.invalid"
         [class]="emailInput.invalid ? 'invalid-btn' : 'valid-btn'"
       >
         Send Verification Link
       </button>
+      @if (resMessage || errMessage) {
+      <p style="font-size: 12px;">
+      <span style="color: blue;"> {{ resMessage }}</span> 
+       <span style="color: red;">*{{ errMessage }}</span> 
+      </p>
+    }
     </div>
 
     <div class="right">
