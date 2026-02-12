@@ -11,6 +11,7 @@ import { RouterLink } from "@angular/router";
 })
 export class SigninComponent {
   errorMessage: string = '';
+  statusCode: number = 0;
   private authService = inject(AuthService);
   signinModel = signal<{ email: string; password: string }>({
     email: '',
@@ -32,8 +33,10 @@ export class SigninComponent {
       return;
     }
     this.authService.signin(this.signinModel()).subscribe({
-      error: (message)=>{
-        this.errorMessage = message;
+      error: (res)=>{
+        this.errorMessage = res.message;
+        this.statusCode = res.statusCode;
+        
       }
     })
   }

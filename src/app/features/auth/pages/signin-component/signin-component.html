@@ -111,9 +111,14 @@
         </div>
 
         @if (errorMessage) {
-          <div class="error-message">
+          <p class="error-message">
            *{{ errorMessage }}
-          </div>
+           @if (statusCode == 403) {
+             <a routerLink="/not-verified">
+               Go to verify Your Account
+             </a>
+           }
+          </p>
         }
         <div class="signup" style="color: var(--gray-400)">
           New to TaskTastic?

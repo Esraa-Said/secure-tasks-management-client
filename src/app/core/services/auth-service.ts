@@ -20,8 +20,9 @@ export class AuthService {
 
   signin(data: { email: string; password: string }): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/login`, data).pipe(
-      map((res) => res.message),
-      catchError((error) => throwError(() => error.error?.message || 'Server Error')),
+      // map((res) => res.message),
+      catchError((error) => throwError(() =>  ({statusCode: error.status, message: error.error?.message || 'Internal Server Error'}
+      ))),
     );
   }
 
