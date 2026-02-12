@@ -1,0 +1,143 @@
+.container,
+.content,
+.left,
+.right,
+.image,
+.no-worry,
+.instructions,
+.instructions p:first-of-type,
+.tip,
+.back-to-login,
+label {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.container {
+  background: rgba(172, 172, 172, 0.1);
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+}
+
+.content {
+  min-width: 80%;
+
+  padding: 50px;
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.08),
+    0 12px 20px rgba(0, 0, 0, 0.12);
+}
+.left,
+.right {
+  flex-direction: column;
+  gap: 20px;
+  flex: 1 1 45%;
+}
+.image {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--electric-violet);
+}
+
+h1,
+h3 {
+  letter-spacing: 2px;
+}
+h3 {
+  width: 90%;
+}
+.no-worry {
+  color: var(--gray-700);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-weight: 450;
+  font-size: 14px;
+  width: 100%;
+  justify-content: start;
+}
+label img {
+  margin-right: 5px;
+  width: 16px;
+}
+
+input,
+button {
+  width: 100%;
+  padding: 10px;
+  background: var(--gray-100);
+  border: none;
+  border-radius: 8px;
+  margin-top: -15px;
+}
+
+i {
+  color: var(--gray-400);
+  font-size: 12px;
+  width: 100%;
+  margin-top: -15px;
+}
+.valid-btn {
+  background: var(--blue-to-purple-to-pink-gradient);
+  color: white;
+  cursor: pointer;
+}
+
+.invalid-btn {
+  cursor: not-allowed;
+}
+
+.instructions {
+  gap: 15px;
+  justify-content: start;
+  width: 90%;
+  font-size: 14px;
+}
+
+.instructions p:first-of-type {
+  background: var(--bright-blue);
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  color: white;
+}
+
+.tip {
+  border: 2px solid rgb(250, 255, 100);
+  border-radius: 10px;
+  padding: 20px;
+  background-color: rgba(250, 255, 175, 0.3);
+  font-size: 12px;
+  gap: 10px;
+  justify-content: start;
+  width: 90%;
+}
+
+.back-to-login {
+  font-size: 14px;
+  gap: 5px;
+
+}
+.back-to-login a {
+  text-decoration: none;
+  color: black;
+}
+.back-to-login img {
+  width: 16px;
+}
+
+@media (max-width: 1100px) {
+  .content{
+    flex-direction: column;
+    gap: 50px;
+    min-width: 50%;
+  }
+}

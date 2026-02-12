@@ -5,13 +5,18 @@ import { VerifiedSuccessfullyComponent } from './features/auth/pages/verified-su
 import { VerifiedFailedComponent } from './features/auth/pages/verified-failed-component/verified-failed-component';
 import { verifyAccountGuard } from './core/guards/verify-account-guard';
 import { SigninComponent } from './features/auth/pages/signin-component/signin-component';
+import { NotVerifiedResendEmailComponent } from './features/auth/pages/not-verified-resend-email-component/not-verified-resend-email-component';
 
 export const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch: 'full' },
   { path: 'signin', component: SigninComponent, pathMatch: 'full' },
   { path: 'email-verification-sent', component: SendVerificationEmailComponent, pathMatch: 'full' },
-  { path: 'auth/verify-user/:code', component: SendVerificationEmailComponent ,canActivate: [verifyAccountGuard] },
+  {
+    path: 'auth/verify-user/:code',
+    component: SendVerificationEmailComponent,
+    canActivate: [verifyAccountGuard],
+  },
   { path: 'successfully-verified', component: VerifiedSuccessfullyComponent, pathMatch: 'full' },
   { path: 'failed-verified', component: VerifiedFailedComponent, pathMatch: 'full' },
+  { path: 'not-verified', component: NotVerifiedResendEmailComponent, pathMatch: 'full' },
 ];
-

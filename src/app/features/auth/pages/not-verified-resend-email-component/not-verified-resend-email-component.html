@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="content">
+    <div class="left">
+      <div class="image">
+        <img src="assets/verification-email-icon.png" alt="email-icon" />
+      </div>
+
+      <h1>Resend Verification</h1>
+
+      <p class="no-worry">
+        <span> No worries! We'll send you a new mail </span>
+        <span style="margin-top: -5px"> 📩 </span>
+      </p>
+
+      <label for="email">
+        <img src="assets/email-icon.png" alt="email-icon" />
+        Your Email Address
+      </label>
+
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        email
+        placeholder="you@awesome.com"
+        ngModel
+        #emailInput="ngModel"
+      />
+
+      <i>Enter the email you used to sign up</i>
+
+      <button
+        [disabled]="emailInput.invalid"
+        [class]="emailInput.invalid ? 'invalid-btn' : 'valid-btn'"
+      >
+        Send Verification Link
+      </button>
+    </div>
+
+    <div class="right">
+      <h3>What happens next?</h3>
+
+      <div class="instructions">
+        <p>1</p>
+        <p>Check your email inbox</p>
+        <p>📬</p>
+      </div>
+
+      <div class="instructions">
+        <p>2</p>
+        <p>Click the verification link</p>
+        <p>🔗</p>
+      </div>
+
+      <div class="instructions">
+        <p>3</p>
+        <p>Start using TaskTastic!</p>
+        <p>🚀</p>
+      </div>
+
+      <div class="tip">
+        <p style="font-size: 25px">💡</p>
+        <p>
+          <span style="font-weight: bold; font-size: 14px">Pro tip:</span>
+          The verification link expires in 15 minutes<br />
+          Make sure to click the link soon after receiving it!
+        </p>
+      </div>
+      <div class="back-to-login">
+        <img src="assets/back-arrow-icon.png" alt="back-arrow-icon" />
+
+        <a routerLink="/signin"> Back to Login </a>
+      </div>
+    </div>
+  </div>
+</div>
