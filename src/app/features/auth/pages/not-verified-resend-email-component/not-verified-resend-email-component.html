@@ -37,12 +37,13 @@
       >
         Send Verification Link
       </button>
-      @if (resMessage || errMessage) {
-      <p style="font-size: 12px;">
-      <span style="color: blue;"> {{ resMessage }}</span> 
-       <span style="color: red;">*{{ errMessage }}</span> 
+      <p style="font-size: 12px">
+        @if (resMessage) {
+          <span style="color: blue"> {{ resMessage }}</span>
+        } @else if (errMessage) {
+          <span style="color: red">*{{ errMessage }}</span>
+        }
       </p>
-    }
     </div>
 
     <div class="right">

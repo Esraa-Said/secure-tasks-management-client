@@ -31,11 +31,13 @@
         Resend Verification Email
       </button>
 
-      @if (resMessage) {
-        <p style="color: blue; text-align: center; font-size: 14px">{{ resMessage }}</p>
-      } @else {
-        <p style="color: red; text-align: center; font-size: 14px">*{{ errMessage }}</p>
-      }
+      <p style="font-size: 12px">
+        @if (resMessage) {
+          <span style="color: blue"> {{ resMessage }}</span>
+        } @else if (errMessage) {
+          <span style="color: red">*{{ errMessage }}</span>
+        }
+      </p>
     </div>
   </div>
 </div>

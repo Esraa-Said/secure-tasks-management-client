@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from "@angular/router";
+import { RouterLink } from '@angular/router';
+import { AuthService } from '../../../../core/services/auth-service';
 
 @Component({
   selector: 'app-send-forget-password-email',
@@ -11,5 +12,15 @@ import { RouterLink } from "@angular/router";
 export class SendForgetPasswordEmail {
   resMessage: string = '';
   errMessage: string = '';
-  sendForgetPasswordEmail(userEmail: string) {}
+  authService = inject(AuthService);
+  sendForgetPasswordEmail(userEmail: string) {
+    this.resMessage = '';
+    this.errMessage = '';
+    this.authService.sendForgetPasswordEmail(userEmail).subscribe({
+      next: (msg) => (this.resMessage = msg),
+      error: (err) => (this.errMessage = err),
+    });
+    
+    
+  }
 }
