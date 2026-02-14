@@ -6,6 +6,7 @@ import { VerifiedFailedComponent } from './features/auth/pages/verified-failed-c
 import { verifyAccountGuard } from './core/guards/verify-account-guard';
 import { SigninComponent } from './features/auth/pages/signin-component/signin-component';
 import { NotVerifiedResendEmailComponent } from './features/auth/pages/not-verified-resend-email-component/not-verified-resend-email-component';
+import { SendForgetPasswordEmail } from './features/auth/pages/send-forget-password-email/send-forget-password-email';
 
 export const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch: 'full' },
@@ -19,4 +20,5 @@ export const routes: Routes = [
   { path: 'successfully-verified', component: VerifiedSuccessfullyComponent, pathMatch: 'full' },
   { path: 'failed-verified', component: VerifiedFailedComponent, pathMatch: 'full' },
   { path: 'not-verified', component: NotVerifiedResendEmailComponent, pathMatch: 'full' },
+  { path: 'send-forget-password-email', component: SendForgetPasswordEmail, pathMatch: 'full' },
 ];
