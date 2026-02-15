@@ -34,11 +34,18 @@ export class AuthService {
     return this.httpClient.get<any>(`${this.baseUrl}/verify-user/${code}`);
   }
   resendVerificationCode(email: string): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/resend-verification-code`, { email: email });
+    return this.httpClient.post<any>(`${this.baseUrl}/resend-verification-code`, { email });
   }
 
   sendForgetPasswordEmail(email: string): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseUrl}/forget-password-mail`, { email: email }).pipe(
+    return this.httpClient.post<any>(`${this.baseUrl}/forget-password-mail`, { email }).pipe(
+      map((res) => res.message),
+      catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
+    );
+  }
+
+  resetPassword(password: string, code: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseUrl}/change-password/${code}`, { password }).pipe(
       map((res) => res.message),
       catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
     );

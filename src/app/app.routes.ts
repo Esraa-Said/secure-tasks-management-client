@@ -7,6 +7,7 @@ import { verifyAccountGuard } from './core/guards/verify-account-guard';
 import { SigninComponent } from './features/auth/pages/signin-component/signin-component';
 import { NotVerifiedResendEmailComponent } from './features/auth/pages/not-verified-resend-email-component/not-verified-resend-email-component';
 import { SendForgetPasswordEmail } from './features/auth/pages/send-forget-password-email/send-forget-password-email';
+import { ResetPasswordComponent } from './features/auth/pages/reset-password-component/reset-password-component';
 
 export const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch: 'full' },
@@ -16,6 +17,11 @@ export const routes: Routes = [
     path: 'auth/verify-user/:code',
     component: SendVerificationEmailComponent,
     canActivate: [verifyAccountGuard],
+  },
+  {
+    path: 'auth/reset-password/:code',
+    component: ResetPasswordComponent,
+
   },
   { path: 'successfully-verified', component: VerifiedSuccessfullyComponent, pathMatch: 'full' },
   { path: 'failed-verified', component: VerifiedFailedComponent, pathMatch: 'full' },
