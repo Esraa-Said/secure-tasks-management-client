@@ -10,11 +10,11 @@ export const verifyAccountGuard: CanActivateFn = (route) => {
 
   return authService.verifyAccount(code).pipe(
     map(() => {
-      router.navigateByUrl('successfully-verified');
+      router.navigateByUrl('successfully-verified');      
       return false; // Prevent access to the actual URL
     }),
     catchError((err) => {
-      router.navigateByUrl('failed-verified', { state: { msg: err.error?.message || 'Internal server error' } });
+      router.navigateByUrl('failed-verified', { state: { msg: err } });
       return of(false);
     })
   );
