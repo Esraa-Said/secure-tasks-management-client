@@ -44,7 +44,7 @@ export class AuthService {
     );
   }
 
-  resetPassword(password: string, code: string): Observable<any> {
+  resetPassword(password: string, code: string | null | undefined): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/change-password/${code}`, { password }).pipe(
       map((res) => res.message),
       catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
