@@ -20,6 +20,15 @@ import { map } from 'rxjs';
   styleUrl: './reset-password-component.css',
 })
 export class ResetPasswordComponent {
+  showPassword = signal<boolean>(false);
+  showConfirmPassword = signal<boolean>(false);
+  togglePasswordVisibility() {
+    this.showPassword.update((visible) => !visible);
+  }
+  toggleConfirmPasswordVisibility() {
+    this.showConfirmPassword.update((visible) => !visible);
+  }
+
   resMessage: string = '';
   errMessage: string = '';
   private authService = inject(AuthService);
