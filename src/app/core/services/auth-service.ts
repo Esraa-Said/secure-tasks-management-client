@@ -9,6 +9,8 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   #token = signal<string | null>(localStorage.getItem('auth_token'));
   token = this.#token.asReadonly();
+  #user = signal<string | null>(localStorage.getItem('auth_token'));
+  user = this.#token.asReadonly();
   setToken(newToken: string) {
     this.#token.set(newToken);
     localStorage.setItem('auth-token', newToken);
