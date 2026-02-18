@@ -2,6 +2,7 @@ import { effect, inject, Injectable, signal } from '@angular/core';
 import { SignupFormInterface } from '../models/signup-form-interface';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { UserInterface } from '../models/user-interface';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
   #token = signal<string | null>(localStorage.getItem('auth_token'));
   token = this.#token.asReadonly();
-  #user = signal<string | null>(localStorage.getItem('auth_token'));
-  user = this.#token.asReadonly();
+  user = signal<UserInterface | null>(null);
   setToken(newToken: string) {
     this.#token.set(newToken);
     localStorage.setItem('auth-token', newToken);
@@ -34,7 +34,10 @@ export class AuthService {
 
   signin(data: { email: string; password: string }): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/login`, data).pipe(
-      map((res) => this.setToken(res.token)),
+      map((res) => {
+        this.setToken(res.token);
+        this.user.set(res.data.user);
+      }),
       catchError((error) =>
         throwError(() => ({
           statusCode: error.status,
@@ -46,7 +49,10 @@ export class AuthService {
 
   verifyAccount(code: string | null): Observable<any> {
     return this.httpClient.get<any>(`${this.baseUrl}/verify-user/${code}`).pipe(
-      map((res) => this.setToken(res.token)),
+      map((res) => {
+        this.setToken(res.token);
+        this.user.set(res.data.user);
+      }),
       catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
     );
   }
