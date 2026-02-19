@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="logo">
+    <img src="assets/dashboard.png" alt="todo" />
+  </div>
+  <div class="title">
+    <h3>TaskTastic</h3>
+    <p>Task Management</p>
+  </div>
+
+  <div class="search">
+    <img src="assets/search.png" alt="search" />
+    <input type="text" placeholder="Search tasks...." />
+  </div>
+
+  <div class="username">
+    <h4>
+      {{ authService.user().name }}
+    </h4>
+    <p>{{ authService.user().email }}</p>
+  </div>
+</div>

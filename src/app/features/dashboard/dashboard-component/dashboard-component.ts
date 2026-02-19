@@ -7,6 +7,8 @@ import { Component, signal } from '@angular/core';
   styleUrl: './dashboard-component.css',
 })
 export class DashboardComponent {
-todayDate = signal(new Date());
-numberOfTasks: any;
+  todayDate = signal(new Date());
+  numberOfTasks: any;
+  numberOfCompletedTasks: any;
+  numberOfArchivedTasks: any;
 }

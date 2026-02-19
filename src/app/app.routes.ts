@@ -8,6 +8,8 @@ import { SigninComponent } from './features/auth/pages/signin-component/signin-c
 import { NotVerifiedResendEmailComponent } from './features/auth/pages/not-verified-resend-email-component/not-verified-resend-email-component';
 import { SendForgetPasswordEmail } from './features/auth/pages/send-forget-password-email/send-forget-password-email';
 import { ResetPasswordComponent } from './features/auth/pages/reset-password-component/reset-password-component';
+import { DashboardContainerComponent } from './features/dashboard/dashboard-container-component/dashboard-container-component';
+import { DashboardComponent } from './features/dashboard/dashboard-component/dashboard-component';
 
 export const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch: 'full' },
@@ -21,10 +23,15 @@ export const routes: Routes = [
   {
     path: 'auth/reset-password/:code',
     component: ResetPasswordComponent,
-
   },
   { path: 'successfully-verified', component: VerifiedSuccessfullyComponent, pathMatch: 'full' },
   { path: 'failed-verified', component: VerifiedFailedComponent, pathMatch: 'full' },
   { path: 'not-verified', component: NotVerifiedResendEmailComponent, pathMatch: 'full' },
   { path: 'send-forget-password-email', component: SendForgetPasswordEmail, pathMatch: 'full' },
+
+  {
+    path: 'dashboard',
+    component: DashboardContainerComponent,
+    children: [{ path: '', component: DashboardComponent }],
+  },
 ];

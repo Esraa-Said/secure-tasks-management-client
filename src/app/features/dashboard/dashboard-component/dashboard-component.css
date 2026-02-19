@@ -1,0 +1,6 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgba(127, 246, 255, 0.272);
+}
