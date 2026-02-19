@@ -8,4 +8,5 @@ import { Component, signal } from '@angular/core';
 })
 export class DashboardComponent {
 todayDate = signal(new Date());
+numberOfTasks: any;
 }
