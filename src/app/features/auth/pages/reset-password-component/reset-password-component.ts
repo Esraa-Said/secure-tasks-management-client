@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import {
   form,
   maxLength,
@@ -10,8 +10,6 @@ import {
 } from '@angular/forms/signals';
 import { AuthService } from '../../../../core/services/auth-service';
 import { ActivatedRoute } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
 
 @Component({
   selector: 'app-reset-password-component',
@@ -19,7 +17,11 @@ import { map } from 'rxjs';
   templateUrl: './reset-password-component.html',
   styleUrl: './reset-password-component.css',
 })
-export class ResetPasswordComponent {
+export class ResetPasswordComponent implements OnInit {
+  code: string | null = null;
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => (this.code = params.get('code')));
+  }
   showPassword = signal<boolean>(false);
   showConfirmPassword = signal<boolean>(false);
   togglePasswordVisibility() {
@@ -33,7 +35,6 @@ export class ResetPasswordComponent {
   errMessage: string = '';
   private authService = inject(AuthService);
   private route = inject(ActivatedRoute);
-  code = toSignal(this.route.queryParamMap.pipe(map((params) => params.get('code'))));
   resetPasswordModel = signal<{ password: string; confirmPassword: string }>({
     password: '',
     confirmPassword: '',
@@ -75,15 +76,14 @@ export class ResetPasswordComponent {
   passwordCount = computed(() => this.resetPasswordForm.password().value().length);
   resetPassword(event: Event) {
     event.preventDefault();
-    this.authService
-      .resetPassword(this.resetPasswordForm.password().value(), this.code())
-      .subscribe({
-        next: (msg) => {
-          this.resMessage = msg;
-        },
-        error: (error) => {
-          this.errMessage = error;
-        },
-      });
+
+    this.authService.resetPassword(this.resetPasswordForm.password().value(), this.code).subscribe({
+      next: (msg) => {
+        this.resMessage = msg;
+      },
+      error: (error) => {
+        this.errMessage = error;
+      },
+    });
   }
 }
