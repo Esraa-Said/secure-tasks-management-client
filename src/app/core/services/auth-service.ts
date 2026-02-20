@@ -3,11 +3,16 @@ import { SignupFormInterface } from '../models/signup-form-interface';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { UserInterface } from '../models/user-interface';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+  private baseUrl = 'http://localhost:5000/auth';
+
+  private httpClient = inject(HttpClient);
+
   #token = signal<string | null>(localStorage.getItem('auth_token'));
   token = this.#token.asReadonly();
   user = signal<UserInterface | null>(null);
@@ -16,14 +21,19 @@ export class AuthService {
     localStorage.setItem('auth-token', newToken);
   }
 
+  isTokenExpired(token: string): boolean {
+    const decoded: any = jwtDecode(token);
+    return decoded.exp * 1000 < Date.now();
+  }
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('auth-token');
+    return !!token && !this.isTokenExpired(token);
+  }
+
   logout() {
     this.#token.set(null);
     localStorage.removeItem('auth-token');
   }
-
-  private baseUrl = 'http://localhost:5000/auth';
-
-  private httpClient = inject(HttpClient);
 
   register(data: SignupFormInterface): Observable<any> {
     return this.httpClient.post<any>(`${this.baseUrl}/register`, data).pipe(
