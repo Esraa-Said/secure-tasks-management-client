@@ -1,10 +1,11 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../core/services/auth-service';
 import { TaskService } from '../../../core/services/task-service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-component',
-  imports: [],
+  imports: [DatePipe],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.css',
 })
@@ -21,10 +22,10 @@ export class DashboardComponent implements OnInit {
   ngOnInit(): void {
     this.taskService.getTasksStatus().subscribe({
       next: (res) => {
-        this.numberOfTasks = res.totalTasks;
-        this.numberOfCompletedTasks = res.completedTasks;
-        this.numberOfArchivedTasks = res.cancelledTasks;
-        this.numberOfProgressTasks = res.inProgressTasks;
+        this.numberOfTasks = res.data.totalTasks;
+        this.numberOfCompletedTasks = res.data.completedTasks;
+        this.numberOfArchivedTasks = res.data.cancelledTasks;
+        this.numberOfProgressTasks = res.data.inProgressTasks;
       },
       error: (err)=>{
         this.errorMessage = err;

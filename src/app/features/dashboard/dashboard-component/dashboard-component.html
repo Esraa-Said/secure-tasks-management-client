@@ -4,12 +4,12 @@
       <h1>Welcome back, {{ authService.user()?.name }}! 👋</h1>
       <p>Here's what's happening with your projects today.</p>
     </div>
-    <p>Today: {{ todayDate() }}</p>
+    <p>Today: {{ todayDate() | date}}</p>
   </div>
 
   <div class="numbers-boxes">
     <div class="box">
-      <div class="image">
+      <div class="image" style="background-color: rgb(255, 106, 0);">
         <img src="assets/in-progress.png" alt="icon" />
       </div>
       <div class="number">
@@ -19,7 +19,7 @@
     </div>
 
     <div class="box">
-      <div class="image">
+      <div class="image" style="background-color: rgb(63, 94, 247);">
         <img src="assets/tasks.png" alt="icon" />
       </div>
       <div class="number">
@@ -29,7 +29,7 @@
     </div>
 
     <div class="box">
-      <div class="image">
+      <div class="image" style="background-color: rgb(3, 174, 103);">
         <img src="assets/checkmark-icon.png" alt="icon" />
       </div>
       <div class="number">
@@ -39,13 +39,13 @@
     </div>
 
     <div class="box">
-      <div class="image">
+      <div class="image" style="background-color: rgb(237, 102, 102);">
         <img src="assets/archived_tasks.png" alt="icon" />
       </div>
       <div class="number">
         {{ numberOfArchivedTasks }}
       </div>
-      <div class="title">Completed Tasks</div>
+      <div class="title">Archived Tasks</div>
     </div>
   </div>
 

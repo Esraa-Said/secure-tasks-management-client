@@ -9,11 +9,20 @@ import { jwtDecode } from 'jwt-decode';
   providedIn: 'root',
 })
 export class AuthService {
+  constructor() {
+    const token = localStorage.getItem('auth-token');
+    const user = localStorage.getItem('user');
+
+    if (token && user && !this.isTokenExpired(token)) {
+      this.#token.set(token);
+      this.user.set(JSON.parse(user));
+    }
+  }
   private baseUrl = 'http://localhost:5000/auth';
 
   private httpClient = inject(HttpClient);
 
-  #token = signal<string | null>(localStorage.getItem('auth_token'));
+  #token = signal<string | null>(localStorage.getItem('auth-token'));
   token = this.#token.asReadonly();
   user = signal<UserInterface | null>(null);
   setToken(newToken: string) {
@@ -32,7 +41,9 @@ export class AuthService {
 
   logout() {
     this.#token.set(null);
+    this.user.set(null);
     localStorage.removeItem('auth-token');
+    localStorage.removeItem('user');
   }
 
   register(data: SignupFormInterface): Observable<any> {
@@ -47,6 +58,7 @@ export class AuthService {
       map((res) => {
         this.setToken(res.token);
         this.user.set(res.data.user);
+        localStorage.setItem('user', JSON.stringify(this.user()));
       }),
       catchError((error) =>
         throwError(() => ({
@@ -62,6 +74,7 @@ export class AuthService {
       map((res) => {
         this.setToken(res.token);
         this.user.set(res.data.user);
+        localStorage.setItem('user', JSON.stringify(this.user()));
       }),
       catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
     );
