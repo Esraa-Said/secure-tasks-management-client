@@ -1,6 +1,6 @@
-export interface UserInterface{
-    email: string,
-    name: string,
-    id?: string,
-    isVerified? : boolean
+export interface UserInterface {
+  email: string;
+  name: string;
+  id?: string;
+  isVerified?: boolean;
 }
