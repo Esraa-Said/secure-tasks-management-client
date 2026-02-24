@@ -4,10 +4,11 @@ import { signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { catchError, of } from 'rxjs';
 import { RouterLink } from "@angular/router";
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard-in-progress-tasks-component',
-  imports: [RouterLink],
+  imports: [RouterLink, DatePipe],
   templateUrl: './dashboard-in-progress-tasks-component.html',
   styleUrl: './dashboard-in-progress-tasks-component.css',
 })

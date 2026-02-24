@@ -1,14 +1,29 @@
 <div class="in-progress-tasks">
   <div class="title">
-    <div>
+    <div class="title-img">
       <span>
-        <img src="assets/in-progress.png" alt="in progress" />
+        <img src="assets/work-in-progress-blue.png" alt="in progress" />
       </span>
       <span>Active Tasks</span>
     </div>
 
-    <div>
+    <div class="view-all">
       <a routerLink="">View All</a>
     </div>
+  </div>
+
+  <div class="tasks">
+    @for (task of inProgressTasks(); track $index) {
+      <div class="task">
+        <p class="task-title">{{ task.title }}</p>
+
+        <p class="task-description">{{ task?.description }}</p>
+
+        <p class="task-due-date">
+
+          <img src="assets/calendar.png" alt="calendar">
+        Due {{ task?.dueDate | date }}</p>
+      </div>
+    }
   </div>
 </div>
