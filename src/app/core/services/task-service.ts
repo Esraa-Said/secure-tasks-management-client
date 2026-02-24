@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { TaskInterface } from '../models/task-interface';
+import { TaskFilters } from '../models/task-filter';
 
 @Injectable({
   providedIn: 'root',
@@ -18,15 +19,14 @@ export class TaskService {
       );
   }
 
-  getUserTasks(status?: string, priority?: string, title?: string): Observable<any> {
-    let query: any = {};
-    if (status) query.status = status;
-    if (priority) query.priority = priority;
-    if (title) query.title = title;
-    
-    return this.httpClient.get<any>(this.baseUrl, { params: { ...query } }).pipe(
-      map((res) => res.data.tasks),
-      catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
-    );
+  getUserTasks(filters: TaskFilters): Observable<TaskInterface[]> {
+    return this.httpClient
+      .get<any>(this.baseUrl, {
+        params: filters as any,
+      })
+      .pipe(
+        map((res) => res.data.tasks as TaskInterface[]),
+        catchError((error) => throwError(() => error.error?.message || 'Internal Server Error')),
+      );
   }
 }

@@ -4,50 +4,19 @@
       <h1>Welcome back, {{ authService.user()?.name }}! 👋</h1>
       <p>Here's what's happening with your projects today.</p>
     </div>
-    <p>Today: {{ todayDate() | date}}</p>
+    <p>Today: {{ todayDate() | date }}</p>
   </div>
 
-  <div class="numbers-boxes">
-    <div class="box">
-      <div class="image" style="background-color: rgb(255, 106, 0);">
-        <img src="assets/in-progress.png" alt="icon" />
-      </div>
-      <div class="number">
-        {{ numberOfProgressTasks }}
-      </div>
-      <div class="title">In Progress Tasks</div>
-    </div>
+  <app-dashboard-numbers
+    [numberOfArchivedTasks]="numberOfArchivedTasks"
+    [numberOfCompletedTasks]="numberOfCompletedTasks"
+    [numberOfProgressTasks]="numberOfProgressTasks"
+    [numberOfTasks]="numberOfTasks"
+  ></app-dashboard-numbers>
 
-    <div class="box">
-      <div class="image" style="background-color: rgb(63, 94, 247);">
-        <img src="assets/tasks.png" alt="icon" />
-      </div>
-      <div class="number">
-        {{ numberOfTasks }}
-      </div>
-      <div class="title">Total Tasks</div>
-    </div>
-
-    <div class="box">
-      <div class="image" style="background-color: rgb(3, 174, 103);">
-        <img src="assets/checkmark-icon.png" alt="icon" />
-      </div>
-      <div class="number">
-        {{ numberOfCompletedTasks }}
-      </div>
-      <div class="title">Completed Tasks</div>
-    </div>
-
-    <div class="box">
-      <div class="image" style="background-color: rgb(237, 102, 102);">
-        <img src="assets/archived_tasks.png" alt="icon" />
-      </div>
-      <div class="number">
-        {{ numberOfArchivedTasks }}
-      </div>
-      <div class="title">Archived Tasks</div>
-    </div>
-  </div>
+<app-dashboard-in-progress-tasks-component>
+  
+</app-dashboard-in-progress-tasks-component>
 
   @if (errorMessage) {
     <div class="error-message">*{{ errorMessage }}</div>

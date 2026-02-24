@@ -2,10 +2,12 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../core/services/auth-service';
 import { TaskService } from '../../../core/services/task-service';
 import { DatePipe } from '@angular/common';
+import { DashboardNumbers } from '../../../shared/dashboard-numbers/dashboard-numbers';
+import { DashboardInProgressTasksComponent } from '../../../shared/dashboard-in-progress-tasks-component/dashboard-in-progress-tasks-component';
 
 @Component({
   selector: 'app-dashboard-component',
-  imports: [DatePipe],
+  imports: [DatePipe, DashboardNumbers, DashboardInProgressTasksComponent],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.css',
 })

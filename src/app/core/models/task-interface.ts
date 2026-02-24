@@ -4,6 +4,6 @@ export interface TaskInterface {
   description?: string;
   status: 'PENDING' | 'IN_PROGRESS' | 'COMPLETED' | 'CANCELLED';
   priority: 'LOW' | 'MEDIUM' | 'HIGH';
-  dueDate?: Date;
+  dueDate?: string;
   userId?: string;
 }
