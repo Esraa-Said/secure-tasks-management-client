@@ -11,10 +11,11 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  word-break: break-all;
+
   line-height: 35px;
 }
 header h1 {
+  word-break: break-all;
   font-size: 32px;
   letter-spacing: 1.5px;
   margin-bottom: 10px;

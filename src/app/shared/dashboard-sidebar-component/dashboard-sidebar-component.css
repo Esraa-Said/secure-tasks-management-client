@@ -26,13 +26,18 @@
   width: calc(20% - 60px);
 }
 
-.link:hover, .active {
-  background: var(--bright-blue);
+.link:hover {
+  background: rgba(227, 226, 226, 0.388);
   border-radius: 10px;
-  color: white;
 }
 
-.link:last-child:hover{
-  background: var( --hot-red);
-   border: none;
+.active {
+  background: var(--bright-blue);
+  color: white;
+  border-radius: 10px;
+}
+.link:last-child:hover {
+  background: var(--hot-red);
+  border: none;
+  color: white;
 }
