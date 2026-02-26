@@ -1,67 +1,61 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #f2f5f9;
-    padding: 20px 30px;
-    min-height: fit-content;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background-color: #f5f9fdc0;
+  padding: 30px;
+  min-height: 100vh;
 }
 
-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-   word-break: break-all;
-    line-height: 35px;
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  word-break: break-all;
+  line-height: 35px;
 }
-header h1{
-    font-size: 24px;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
-}
-
-header  p{
-    color: var(--gray-400);
-    font-size: 14px;
+header h1 {
+  font-size: 32px;
+  letter-spacing: 1.5px;
+  margin-bottom: 10px;
 }
 
-
-main{
-    display: flex;
-    
-    gap: 20px;
-
+header p {
+  color: var(--gray-400);
+  font-size: 14px;
 }
-app-dashboard-in-progress-tasks-component{
-flex-basis: 75%;
+
+main {
+  display: flex;
+
+  gap: 20px;
 }
-app-high-priority-tasks-dashboard-component{
-    flex-basis: 25%;
+app-dashboard-in-progress-tasks-component {
+  flex-basis: 75%;
+}
+app-high-priority-tasks-dashboard-component {
+  flex-basis: 25%;
 }
 @media (max-width: 950px) {
-    
-    header{
-        flex-direction: column;
-        align-items: start;
-    }
+  header {
+    flex-direction: column;
+    align-items: start;
+  }
 
-    main{
-        flex-direction: column;
-    }
+  main {
+    flex-direction: column;
+  }
 
-    app-dashboard-in-progress-tasks-component{
-        flex-basis: 100%;
-    }
-    
+  app-dashboard-in-progress-tasks-component {
+    flex-basis: 100%;
+  }
 
-    app-high-priority-tasks-dashboard-component{
-        flex-basis: 100%;
-    }
+  app-high-priority-tasks-dashboard-component {
+    flex-basis: 100%;
+  }
 }
 
-
-.error-message{
-    font-size: 14px;
-    color: red;
+.error-message {
+  font-size: 14px;
+  color: red;
 }
-

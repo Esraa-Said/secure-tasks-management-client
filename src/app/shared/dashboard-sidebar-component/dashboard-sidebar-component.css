@@ -1,0 +1,38 @@
+.links {
+  background: white;
+  min-height: 100vh;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.link {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  color: rgb(91, 91, 91);
+  font-weight: 500;
+  font-size: 20px;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.link:last-child {
+  border-top: 2px solid rgb(91, 91, 91);
+  position: fixed;
+  bottom: 10px;
+  left: 30px;
+  width: calc(20% - 60px);
+}
+
+.link:hover, .active {
+  background: var(--bright-blue);
+  border-radius: 10px;
+  color: white;
+}
+
+.link:last-child:hover{
+  background: var( --hot-red);
+   border: none;
+}

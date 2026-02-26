@@ -1,5 +1,15 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.content {
+  display: flex;
+}
+
+aside {
+  flex-basis: 20%;
+  
+}
+main {
+  flex-basis: 80%;
 }
