@@ -1,0 +1,38 @@
+<div class="high-priority-tasks">
+
+
+  <div class="title">
+    <span>
+      <img src="assets/high-priority.png" alt="high-priority" />
+    </span>
+
+    <span class="high-priority"> High Priority </span>
+  </div>
+
+
+  <div class="tasks">
+
+     @for (task of highTasks(); track $index) {
+      <div class="task">
+        <p class="task-title">{{ task.title }}</p>
+
+        <p 
+        class="task-status" 
+        [class.PENDING]="task.status == 'PENDING'"
+        [class.IN_PROGRESS]="task.status == 'IN_PROGRESS'"
+        [class.COMPLETED]="task.status == 'COMPLETED'"
+        [class.CANCELLED]="task.status == 'CANCELLED'"
+        
+        >{{ task.status }}</p>
+
+        <p class="task-due-date">
+
+          <img src="assets/calendar.png" alt="calendar">
+        Due {{ task?.dueDate | date }}</p>
+      </div>
+    }
+
+  </div>
+
+
+</div>

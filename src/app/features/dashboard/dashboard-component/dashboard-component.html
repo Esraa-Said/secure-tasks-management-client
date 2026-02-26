@@ -1,11 +1,11 @@
 <div class="container">
-  <div class="header">
+  <header>
     <div>
       <h1>Welcome back, {{ authService.user()?.name }}! 👋</h1>
       <p>Here's what's happening with your projects today.</p>
     </div>
     <p>Today: {{ todayDate() | date }}</p>
-  </div>
+  </header>
 
   <app-dashboard-numbers
     [numberOfArchivedTasks]="numberOfArchivedTasks"
@@ -14,9 +14,11 @@
     [numberOfTasks]="numberOfTasks"
   ></app-dashboard-numbers>
 
-<app-dashboard-in-progress-tasks-component>
-  
-</app-dashboard-in-progress-tasks-component>
+  <main>
+    <app-dashboard-in-progress-tasks-component> </app-dashboard-in-progress-tasks-component>
+
+    <app-high-priority-tasks-dashboard-component></app-high-priority-tasks-dashboard-component>
+  </main>
 
   @if (errorMessage) {
     <div class="error-message">*{{ errorMessage }}</div>

@@ -2,12 +2,13 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuthService } from '../../../core/services/auth-service';
 import { TaskService } from '../../../core/services/task-service';
 import { DatePipe } from '@angular/common';
-import { DashboardNumbers } from '../../../shared/dashboard-numbers/dashboard-numbers';
-import { DashboardInProgressTasksComponent } from '../../../shared/dashboard-in-progress-tasks-component/dashboard-in-progress-tasks-component';
+import { DashboardNumbers } from '../dashboard-numbers/dashboard-numbers';
+import { DashboardInProgressTasksComponent } from '../dashboard-in-progress-tasks-component/dashboard-in-progress-tasks-component';
+import { HighPriorityTasksDashboardComponent } from '../high-priority-tasks-dashboard-component/high-priority-tasks-dashboard-component';
 
 @Component({
   selector: 'app-dashboard-component',
-  imports: [DatePipe, DashboardNumbers, DashboardInProgressTasksComponent],
+  imports: [DatePipe, DashboardNumbers, DashboardInProgressTasksComponent, HighPriorityTasksDashboardComponent],
   templateUrl: './dashboard-component.html',
   styleUrl: './dashboard-component.css',
 })
@@ -29,9 +30,9 @@ export class DashboardComponent implements OnInit {
         this.numberOfArchivedTasks = res.data.cancelledTasks;
         this.numberOfProgressTasks = res.data.inProgressTasks;
       },
-      error: (err)=>{
+      error: (err) => {
         this.errorMessage = err;
-      }
+      },
     });
   }
 }

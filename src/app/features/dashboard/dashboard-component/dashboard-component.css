@@ -7,31 +7,59 @@
     min-height: fit-content;
 }
 
-.header{
+header{
     display: flex;
     justify-content: space-between;
     align-items: center;
    word-break: break-all;
     line-height: 35px;
 }
-.header h1{
+header h1{
     font-size: 24px;
     letter-spacing: 1.5px;
     margin-bottom: 10px;
 }
 
-.header  p{
+header  p{
     color: var(--gray-400);
     font-size: 14px;
 }
 
+
+main{
+    display: flex;
+    
+    gap: 20px;
+
+}
+app-dashboard-in-progress-tasks-component{
+flex-basis: 75%;
+}
+app-high-priority-tasks-dashboard-component{
+    flex-basis: 25%;
+}
 @media (max-width: 950px) {
     
-    .header{
+    header{
         flex-direction: column;
         align-items: start;
     }
+
+    main{
+        flex-direction: column;
+    }
+
+    app-dashboard-in-progress-tasks-component{
+        flex-basis: 100%;
+    }
+    
+
+    app-high-priority-tasks-dashboard-component{
+        flex-basis: 100%;
+    }
 }
+
+
 .error-message{
     font-size: 14px;
     color: red;
