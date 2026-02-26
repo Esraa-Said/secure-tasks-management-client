@@ -42,9 +42,13 @@
   display: grid;
   grid-template-rows: 30px 1fr;
   grid-template-columns: 3fr 1fr;
-  padding: 20px;
+  padding: 20px;    
+  transition: all 0.3s ease-in;
 }
-
+.task:hover{
+    transform: translateY(5px);
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.384);
+}
 .task-title {
   grid-column: 1/2;
   grid-row: 1/2;

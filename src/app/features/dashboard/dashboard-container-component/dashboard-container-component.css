@@ -8,8 +8,18 @@
 
 aside {
   flex-basis: 20%;
+  z-index: 1000;
   
 }
 main {
   flex-basis: 80%;
+}
+
+@media (max-width: 950px) {
+  aside{
+    display: none;
+  }
+  main{
+    flex-basis: 100%;
+  }
 }

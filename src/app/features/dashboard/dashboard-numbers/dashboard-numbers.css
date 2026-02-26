@@ -12,6 +12,11 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    transition: all 0.3s ease-in;
+}
+.numbers-boxes .box:hover{
+    transform: translateY(5px);
+    box-shadow: 2px 2px 2px rgba(128, 128, 128, 0.384);
 }
 .numbers-boxes .box .image{
     border-radius: 10px;
