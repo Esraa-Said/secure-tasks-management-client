@@ -11,6 +11,7 @@ import { ResetPasswordComponent } from './features/auth/pages/reset-password-com
 import { DashboardContainerComponent } from './features/dashboard/dashboard-container-component/dashboard-container-component';
 import { DashboardComponent } from './features/dashboard/dashboard-component/dashboard-component';
 import { authGuard } from './core/guards/auth-guard';
+import { TasksComponent } from './features/tasks-component/tasks-component';
 
 export const routes: Routes = [
   { path: 'register', component: SignupComponent, pathMatch: 'full' },
@@ -33,8 +34,11 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardContainerComponent,
-    canActivate:[authGuard],
-    children: [{ path: '', component: DashboardComponent }],
+    canActivate: [authGuard],
+    children: [
+      { path: '', component: DashboardComponent },
+      { path: 'tasks', component: TasksComponent },
+    
+    ],
   },
-
 ];

@@ -1,1 +1,22 @@
-<p>tasks-component works!</p>
+@if (tasks().length == 0) {
+} @else {
+  <table class="tasks">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Due Date</th>
+      </tr>
+    </thead>
+
+    @for (task of tasks(); track task.id) {
+      <tr>
+        <td>{{task.title}}</td>
+        <td>{{task.status}}</td>
+        <td>{{task.priority}}</td>
+        <td>{{task.dueDate ?? 'UnLimited'}}</td>
+      </tr>
+    }
+  </table>
+}
