@@ -51,7 +51,8 @@ section .status-filter {
   padding: 10px;
 }
 input,
-select , option{
+select,
+option {
   border: none;
   outline: none;
   width: 100%;
@@ -67,4 +68,62 @@ section .status-filter {
 }
 section .priority-filter {
   flex: 1 1 20%;
+}
+table {
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px rgba(128, 128, 128, 0.347);
+}
+thead {
+  background: var(--gray-100);
+}
+th {
+  font-weight: 500;
+  color: rgb(9, 17, 43);
+  text-align: left;
+  padding: 10px;
+}
+td {
+  padding: 10px;
+  color: var(--gray-700);
+}
+
+/* Status */
+.status-pending {
+  color: orange;
+  background: rgb(180, 118, 3);
+}
+
+.status-in-progress {
+  color: blue;
+  background: rgb(180, 181, 254);
+}
+
+.status-completed {
+  color: green;
+}
+
+.status-cancelled {
+  color: red;
+}
+
+/* Priority */
+.priority-low {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.priority-medium {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.priority-high {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 2px 6px;
+  border-radius: 4px;
 }

@@ -2,11 +2,12 @@ import { Component, inject, signal } from '@angular/core';
 import { TaskService } from '../../core/services/task-service';
 import { MatIcon } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
-import { TaskStatus, TaskPriority } from '../../core/models/task-interface';
+import { TaskStatus, TaskPriority, TaskInterface } from '../../core/models/task-interface';
 import { debounceTime, distinctUntilChanged, Subject } from 'rxjs';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-tasks-component',
-  imports: [MatIcon, RouterLink],
+  imports: [MatIcon, RouterLink, DatePipe],
   templateUrl: './tasks-component.html',
   styleUrl: './tasks-component.css',
 })
@@ -19,7 +20,6 @@ export class TasksComponent {
   nameSearchSubject = new Subject<string>();
   private taskService = inject(TaskService);
   errorMessage = signal<string>('');
-
   tasks = signal<any[]>([]);
 
   constructor() {
@@ -29,6 +29,34 @@ export class TasksComponent {
     });
     this.loadTasks();
   }
+
+  getStatusClass(status: TaskInterface['status']): string {
+  switch (status) {
+    case 'PENDING':
+      return 'status-pending';
+    case 'IN_PROGRESS':
+      return 'status-in-progress';
+    case 'COMPLETED':
+      return 'status-completed';
+    case 'CANCELLED':
+      return 'status-cancelled';
+    default:
+      return '';
+  }
+}
+
+getPriorityClass(priority: TaskInterface['priority']): string {
+  switch (priority) {
+    case 'LOW':
+      return 'priority-low';
+    case 'MEDIUM':
+      return 'priority-medium';
+    case 'HIGH':
+      return 'priority-high';
+    default:
+      return '';
+  }
+}
 
   onNameSearch(event: Event) {
     const value = (event.target as HTMLInputElement).value;

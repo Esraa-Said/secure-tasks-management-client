@@ -1,19 +1,19 @@
 <div class="container">
   <header>
     <div>
-
       <h2>Tasks</h2>
       <p>Manage and track all your tasks</p>
     </div>
-    <a routerLink=""> <mat-icon>add </mat-icon>
-    <span>New Task</span>  
+    <a routerLink="">
+      <mat-icon>add </mat-icon>
+      <span>New Task</span>
     </a>
   </header>
 
   <section>
     <div class="search">
       <mat-icon>search</mat-icon>
-      <input type="text" placeholder="Search tasks...." (change)="onNameSearch($event)"/>
+      <input type="text" placeholder="Search tasks...." (change)="onNameSearch($event)" />
     </div>
     <div class="status-filter">
       <mat-icon>filter_list</mat-icon>
@@ -49,9 +49,9 @@
       @for (task of tasks(); track task.id) {
         <tr>
           <td>{{ task.title }}</td>
-          <td>{{ task.status }}</td>
-          <td>{{ task.priority }}</td>
-          <td>{{ task.dueDate ?? 'UnLimited' }}</td>
+          <td [class]="getStatusClass(task.status)">{{ task.status }}</td>
+          <td [class]="getPriorityClass(task.priority)">{{ task.priority }}</td>
+          <td>{{ (task.dueDate | date) ?? 'UnLimited' }}</td>
           <td>
             <mat-icon>remove_red_eye</mat-icon>
             <mat-icon>edit</mat-icon>
