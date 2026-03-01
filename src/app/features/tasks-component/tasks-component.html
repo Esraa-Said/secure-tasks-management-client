@@ -1,22 +1,65 @@
-@if (tasks().length == 0) {
-} @else {
-  <table class="tasks">
-    <thead>
-      <tr>
-        <th>Title</th>
-        <th>Status</th>
-        <th>Priority</th>
-        <th>Due Date</th>
-      </tr>
-    </thead>
+<div class="container">
+  <header>
+    <div>
 
-    @for (task of tasks(); track task.id) {
-      <tr>
-        <td>{{task.title}}</td>
-        <td>{{task.status}}</td>
-        <td>{{task.priority}}</td>
-        <td>{{task.dueDate ?? 'UnLimited'}}</td>
-      </tr>
-    }
-  </table>
-}
+      <h2>Tasks</h2>
+      <p>Manage and track all your tasks</p>
+    </div>
+    <a routerLink=""> <mat-icon>add </mat-icon>
+    <span>New Task</span>  
+    </a>
+  </header>
+
+  <section>
+    <div class="search">
+      <mat-icon>search</mat-icon>
+      <input type="text" placeholder="Search tasks...." (change)="onNameSearch($event)"/>
+    </div>
+    <div class="status-filter">
+      <mat-icon>filter_list</mat-icon>
+      <select name="status-filter" id="status-filter" (change)="onStatusChange($event)">
+        @for (status of taskStatus; track $index) {
+          <option [value]="status">{{ status }}</option>
+        }
+      </select>
+    </div>
+    <div class="priority-filter">
+      <mat-icon>filter_list</mat-icon>
+      <select name="priority-filter" id="priority-filter" (change)="onPriorityChange($event)">
+        @for (priority of taskPriority; track $index) {
+          <option [value]="priority">{{ priority }}</option>
+        }
+      </select>
+    </div>
+  </section>
+
+  @if (tasks().length == 0) {
+  } @else {
+    <table class="tasks">
+      <thead>
+        <tr>
+          <th>Task Title</th>
+          <th>Status</th>
+          <th>Priority</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+
+      @for (task of tasks(); track task.id) {
+        <tr>
+          <td>{{ task.title }}</td>
+          <td>{{ task.status }}</td>
+          <td>{{ task.priority }}</td>
+          <td>{{ task.dueDate ?? 'UnLimited' }}</td>
+          <td>
+            <mat-icon>remove_red_eye</mat-icon>
+            <mat-icon>edit</mat-icon>
+            <mat-icon>archive</mat-icon>
+            <mat-icon>delete</mat-icon>
+          </td>
+        </tr>
+      }
+    </table>
+  }
+</div>

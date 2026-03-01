@@ -7,3 +7,6 @@ export interface TaskInterface {
   dueDate?: string;
   userId?: string;
 }
+
+export const TaskStatus = ['ALL STATUS','PENDING', 'IN_PROGRESS', 'COMPLETED', 'CANCELLED'];
+export const TaskPriority = ['ALL PRIORITY','LOW', 'MEDIUM', 'HIGH'];

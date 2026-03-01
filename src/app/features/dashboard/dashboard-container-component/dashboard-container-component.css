@@ -5,21 +5,22 @@
 .content {
   display: flex;
 }
-
+header {
+  z-index: 1000;
+}
 aside {
   flex-basis: 20%;
   z-index: 1000;
-  
 }
 main {
   flex-basis: 80%;
 }
 
 @media (max-width: 950px) {
-  aside{
+  aside {
     display: none;
   }
-  main{
+  main {
     flex-basis: 100%;
   }
 }

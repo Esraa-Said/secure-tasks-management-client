@@ -26,7 +26,7 @@
   width: calc(20% - 60px);
 }
 
-.link:hover {
+.link:not(.active):hover {
   background: rgba(227, 226, 226, 0.388);
   border-radius: 10px;
 }
